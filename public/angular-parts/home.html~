@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>stage</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.superhero.min.css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/src/loading-bar.css">
+    <link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+<style>
+    body {
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+
+    button, input, optgroup, select, textarea {
+        color: black;
+    }
+</style>
+</head>
+<body>
+<div class="container" ng-controller="homeCtrl">
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <---a class="navbar-brand" href="#">JWT Angular---a>
+</div>
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <button data-ng-hide="user" class="btn btn-danger btn-lg" ng-click="showSignin()">signin !</button>
+        <button data-ng-hide="user" class="btn btn-danger btn-lg" ng-click="showSignup()">signup !</button>
+        <button data-ng-show="user" class="btn btn-danger btn-lg" ng-click="signout()">signout!</button>
+        <button data-ng-show="user" class="btn btn-danger btn-lg" ng-click="showStatistics()">show stats !</button>
+    </ul>
+</div>
+<div ng-show="signinForm && !user">
+<div>
+
+    <label>login:</label>
+    <input type="text" ng-model="login"/>
+</div>
+<div>
+    <label>Password:</label>
+    <input type="password" ng-model="password"/>
+</div>
+<div>
+
+
+    <button class="btn btn-danger btn-lg" ng-click="signin()">signin !</button>
+</div>
+</div>
+<div ng-show="signupForm && !user">
+    <div>
+
+        <label>login:</label>
+        <input type="text" ng-model="login"/>
+    </div>
+    <div>
+
+        <label>pseudo:</label>
+        <input type="text" ng-model="pseudo"/>
+    </div>
+    <div>
+        <label>Password:</label>
+        <input type="password" ng-model="password"/>
+    </div>
+    <div>
+
+        <button class="btn btn-danger btn-lg" ng-click="signup()">signup !</button>
+
+    </div>
+</div>
+    <div ng-show="user" >wecome {{user.pseudo}}</div>
+</div>
+<div ng-show=showStats class="container" ng-controller="LineCtrl">
+    {{chartClass}}
+    <select ng-model="query">
+	<option value="geo.city">by city</option>        
+	<option value="userAgent.os.name">by operating system</option>
+        <option value="userAgent.browser.name">by browser</option>
+        <option value="userAgent.cpu.architecture">by CPU</option>
+        <option value="userAgent.engine.name">by engine</option>
+
+    </select>
+
+    <select ng-model="chartClass">
+        <option value="chart-pie">pie chart</option>
+        <option value="chart-line">line chart</option>
+    </select>
+
+    <button ng-click="getStatistics()">go</button>
+    <div ng-show="query">
+        <p>select prerequirenments for your search</p>
+        <li ng-hide="query=='userAgent.os.name'">operating system:
+
+            <select ng-model="pickedOs">
+                <option ng-repeat="x in os" value="{{x}}">
+                    {{ x }}
+                </option>
+            </select>
+        </li>
+        <li ng-hide="query=='userAgent.browser.name'">browser:
+
+            <select ng-model="pickedBrowser">
+                <option data-ng-repeat="x in browser" value="{{x}}">
+                    {{ x }}
+                </option>
+            </select>
+        </li>
+        <li ng-hide="query=='userAgent.cpu.architecture'">cpu architecture
+
+            <select ng-model="pickedCpu">
+                <option data-ng-repeat="x in cpu" value="{{x}}">
+                    {{ x }}
+                </option>
+            </select>
+        </li>
+        <li ng-hide="query=='userAgent.engine.name'">engine
+
+            <select ng-model="pickedEngine">
+                <option data-ng-repeat="x in engine" value="{{x}}">
+                    {{ x }}
+                </option>
+            </select>
+        </li>
+    </div>
+    <div ng-show=(chartClass=='chart-pie')>
+    <canvas   id='pie' class="chart chart-pie"  data="data" labels="labels"
+             legend="true" series="series" click="onClick"></canvas>
+    <!-- the problem is with class="chartClass" it's not working-->
+</div>
+    <div ng-show="showComplexSearch">
+    <p>for extra information regarding visitors who use {{searchCriteria}} click on go further </p>
+        <button class="btn btn-danger " ng-click="">go further!</button>
+    </div>
+    </div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/Chart.js/Chart.min.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/homeCtrl.js"></script>
+<script src="scripts/controllers/chartCtrl.js"></script>
+<script src="scripts/services/statistics.js"></script>
+<script src="scripts/services/authService.js"></script>
+</body>
+</html>

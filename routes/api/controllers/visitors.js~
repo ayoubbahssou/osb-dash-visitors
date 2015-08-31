@@ -1,0 +1,61 @@
+var database = require('../../../models');
+var async = require('async');
+
+var VisitorApi = (function() {
+    /**
+     * Public Functions
+     */
+    var _countVisitorsByOperator = function(operator,value,callback) {
+        var query = {};
+        query[operator] = value;
+console.log('query')
+console.log(query)
+        database.getCollection('Visitor').count(query).exec(function(err, visitors) {
+            if(err) return callback(err);
+            return callback(null,visitors);
+        });
+    };
+    var _gettatisticByCriteria = function(criteria, done) {
+        database.getCollection('Visitor').distinct(criteria, function(err, systems) {
+            if(err) return done(err);
+            if(systems) {
+console.log('systems')                
+console.log(systems)
+		async.map(systems, function(system,callback) {
+                    _countVisitorsByOperator(criteria,system, function(err, result) {
+                        if(err) return callback(err);
+                        var statObj = {};
+			//statObj.systems=[]                        
+			statObj[system] = result;
+			//statObj.systems.push(system)
+                        return callback(null,statObj);
+                    })
+                }, function(err, data) {
+			var newData={}
+			newData.systems=systems
+			newData.stats=data			
+			console.log(newData)
+                    return done(err,newData);
+                });
+            } else {
+                return done(null, {});
+            }
+        });
+    };
+    /**
+     * Private Functions
+     */
+    return {
+        getStatisticsByCriteria : function(req, res, next) {
+            var criteria = req.query.criteria;
+            _gettatisticByCriteria(criteria, function(err, data) {
+                if(err) return res.status(500).send({message: err.message});
+                return res.status(200).send(data);
+            })
+
+        }
+    }
+})();
+
+
+module.exports = VisitorApi;

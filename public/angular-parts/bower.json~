@@ -1,0 +1,20 @@
+{
+  "name": "work-shop-angular",
+  "version": "0.0.0",
+  "description": "worshop angular",
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "Chart.js": "~1.0.2",
+    "angular-chart.js": "~0.7.2"
+  }
+}

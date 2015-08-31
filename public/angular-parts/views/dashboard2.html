@@ -1,0 +1,183 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+    </ul>
+
+</div>
+<h3 class="page-title">
+    Dashboard
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="DashboardController">
+
+
+
+    <!-- BEGIN DASHBOARD STATS -->
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box red-sunglo">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>select the search criteria (mandatory) and the extra requirenments (optional)
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form  class="form-horizontal form-bordered">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">criteria</label>
+                                <div class="col-md-4">
+                                    <select ng-model="query">
+                                        <option value=""></option>
+                                        <option value="geo.country">by country</option>
+                                        <option value="deviceType">device type</option>
+                                        <option value="geo.city">by city</option>
+                                        <option value="userAgent.os.name">by operating system</option>
+                                        <option value="userAgent.browser.name">by browser</option>
+                                        <option value="userAgent.cpu.architecture">by CPU</option>
+                                        <option value="userAgent.engine.name">by engine</option>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3">range</label>
+                                <div class="input-group input-large date-picker input-daterange" data-date="10/11/2012" data-date-format="mm-dd-yyyy">
+
+                                    <input type="text" class="form-control" name="from" ng-model="first">
+									<span class="input-group-addon">
+									to </span>
+                                    <input type="text" class="form-control" name="to" ng-model="second">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">frequency</label>
+                                <div class="col-md-4">
+                                    <select ng-model="frequency">
+                                        <option value=""></option>
+                                        <option value=1>every day</option>
+                                        <option value=7>every week</option>
+                                        <option value=30>every month</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">prerequities</label>
+                            <div class="col-md-4">
+                                <div ng-hide="query=='userAgent.os.name'">
+
+                                    <select  ng-model="pickedOs">
+                                        <option ng-repeat="x in os" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+
+                                    </select>
+<span class="help-block">operating system
+								 </span>
+                                </div>
+                                <div ng-hide="query=='userAgent.browser.name'">
+
+                                    <select ng-model="pickedBrowser">
+                                        <option data-ng-repeat="x in browser" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">browser
+								 </span>
+                                </div>
+                                <div ng-hide="query=='userAgent.cpu.architecture'">
+
+                                    <select ng-model="pickedCpu">
+                                        <option data-ng-repeat="x in cpu" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">cpu architecture
+								 </span>
+
+                                </div>
+                                <div ng-hide="query=='userAgent.engine.name'">
+
+                                    <select ng-model="pickedEngine">
+                                        <option data-ng-repeat="x in engine" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">engine
+								 </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button ng-click="getStatisticsByDate()" class="btn purple" >Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="showStats" class="row">
+        <div class="col-md-12">
+            <div class="portlet box red-sunglo">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>search result
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+
+                    <!-- END FORM-->
+                    <!--canvas    class="chart chart-line"  data="data" labels="labels"
+                               legend="true" series="series" click="onClick"></canvas-->
+                    <canvas    class="chart chart-bar"  data="ldata" labels="llabels"
+                               legend="true" series="lseries" click="onClick"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+</div>
+<script>
+    ComponentsPickers.init();// init todo page
+    //ComponentsFormTools.init();
+</script>

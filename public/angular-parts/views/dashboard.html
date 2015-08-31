@@ -1,0 +1,134 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">Home</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+    </ul>
+
+</div>
+<h3 class="page-title">
+    Dashboard
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="DashboardController">
+
+
+
+    <!-- BEGIN DASHBOARD STATS -->
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="portlet box red-sunglo">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>select extra requirenments (optional)
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+
+                    <form  class="form-horizontal form-bordered">
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">prerequities</label>
+                            <div class="col-md-4">
+                                <div ng-hide="query=='userAgent.os.name'">
+
+                                    <select  ng-model="pickedOs">
+                                        <option ng-repeat="x in os" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+
+                                    </select>
+<span class="help-block">operating system
+								 </span>
+                                </div>
+                                <div ng-hide="query=='userAgent.browser.name'">
+
+                                    <select ng-model="pickedBrowser">
+                                        <option data-ng-repeat="x in browser" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">browser
+								 </span>
+                                </div>
+                                <div ng-hide="query=='userAgent.cpu.architecture'">
+
+                                    <select ng-model="pickedCpu">
+                                        <option data-ng-repeat="x in cpu" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">cpu architecture
+								 </span>
+
+                                </div>
+                                <div ng-hide="query=='userAgent.engine.name'">
+
+                                    <select ng-model="pickedEngine">
+                                        <option data-ng-repeat="x in engine" value="{{x}}">
+                                            {{ x }}
+                                        </option>
+                                    </select>
+										<span class="help-block">engine
+								 </span>
+                                </div>
+                            </div>
+                        </div>
+                <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <button ng-click="ShowStatisticsOnMap()" class="btn purple" >Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="row">
+        <div class="col-md-12">
+            <div class="portlet box red-sunglo">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-gift"></i>search result
+                    </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse">
+                        </a>
+                        <a href="javascript:;" class="reload">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portlet-body form">
+                    <div id="chartdiv" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+
+</div>
+<script>
+    ComponentsPickers.init();// init todo page
+    //ComponentsFormTools.init();
+</script>

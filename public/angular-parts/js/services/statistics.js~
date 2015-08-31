@@ -1,0 +1,29 @@
+
+app.factory('statisticsFactory', function($http, $q, API_URL) {
+    return {
+        getStatistics: function(query) {
+          //  country = country? country: 'ma';
+            var deffered = $q.defer();
+            $http.get(API_URL+'/stats', {params: { criteria:query}})
+                .success(function(resp, status) {
+                    deffered.resolve(resp);
+                })
+                .error(function(data, status) {
+                    deffered.reject('Something is wrong with the api !');
+                });
+            return deffered.promise;
+        }/*,
+	  getStatsCity: function(city) {
+          //  country = country? country: 'ma';
+            var deffered = $q.defer();
+            $http.get(API_URL, {params: { q: city}})
+                .success(function(resp, status) {
+                    deffered.resolve(resp);
+                })
+                .error(function(data, status) {
+                    deffered.reject('Something is wrong!');
+                });
+            return deffered.promise;
+        }*/
+    }
+});

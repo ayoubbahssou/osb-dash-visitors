@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.1
+Version: 3.3.0
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="MetronicApp"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="MetronicApp"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en" data-ng-app="MetronicApp">
+<!--<![endif]-->
+
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8"/>
+<title>Metronic | Login Options - Login Form 1</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link href="../vendor/assets/admin/pages/css/login.css" rel="stylesheet" type="text/css"/>
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- BEGIN THEME STYLES -->
+<link href="../vendor/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link href="../vendor/assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css" id="style_color"/>
+<link href="../vendor/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<!-- END THEME STYLES -->
+<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="login"  ng-controller="homeCtrl">
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div class="menu-toggler sidebar-toggler">
+</div>
+<!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGO -->
+<div class="logo">
+
+	<img src="../vendor/assets/admin/layout/img/logo.png" alt=""/>
+
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+	<!-- BEGIN LOGIN FORM -->
+	<form class="login-form">
+		<h3 class="form-title">Sign In</h3>
+		<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			<span>
+			Enter any username and password. </span>
+		</div>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">Username</label>
+			<input ng-model="login" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+		</div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Password</label>
+			<input ng-model="password" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+		</div>
+		<div class="form-actions">
+			<button   ng-click="signin()" class="btn btn-success uppercase">login</button>
+			<label class="rememberme check">
+			<input type="checkbox" name="remember" value="1"/>Remember </label>
+			<a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+		</div>
+
+
+	</form>
+	<!-- END LOGIN FORM -->
+	<!-- BEGIN FORGOT PASSWORD FORM -->
+
+	<!-- END FORGOT PASSWORD FORM -->
+	<!-- BEGIN REGISTRATION FORM -->
+
+
+	<!-- END REGISTRATION FORM -->
+</div>
+
+<!-- END LOGIN -->
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<!-- BEGIN CORE JQUERY PLUGINS -->
+<!--[if lt IE 9]>
+<script src="../vendor/assets/global/plugins/respond.min.js"></script>
+<script src="../vendor/assets/global/plugins/excanvas.min.js"></script>
+<![endif]-->
+<script src="../vendor/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+<!-- END CORE JQUERY PLUGINS -->
+
+
+
+<!-- BEGIN CORE ANGULARJS PLUGINS -->
+<script src="../vendor/assets/global/plugins/angularjs/angular.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/angularjs/angular-sanitize.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/angularjs/angular-touch.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/angularjs/plugins/angular-ui-router.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/angularjs/plugins/ocLazyLoad.min.js" type="text/javascript"></script>
+<script src="../vendor/assets/global/plugins/angularjs/plugins/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+<!-- END CORE ANGULARJS PLUGINS -->
+
+<!-- BEGIN APP LEVEL ANGULARJS SCRIPTS -->
+<script src="../angular-parts/js/app.js" type="text/javascript"></script>
+<script src="../angular-parts/js/controllers/homeCtrl.js"></script>
+<script src="../angular-parts/js/controllers/DashboardController.js"></script>
+<script src="../angular-parts/js/services/statistics.js"></script>
+<script src="../angular-parts/js/services/authService.js"></script>
+
+<script src="../angular-parts/js/directives.js" type="text/javascript"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-loading-bar/src/loading-bar.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/Chart.js/Chart.min.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="http://www.amcharts.com/lib/3/ammap.js"></script>
+<script src="http://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+<script src="http://www.amcharts.com/lib/3/themes/dark.js"></script>
+<!-- END APP LEVEL ANGULARJS SCRIPTS -->
+
+<!-- BEGIN APP LEVEL JQUERY SCRIPTS -->
+<script src="../vendor/assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../vendor/assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="../vendor/assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="../vendor/assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+<!-- END APP LEVEL JQUERY SCRIPTS -->
+
+<script type="text/javascript">
+	/* Init Metronic's core jquery plugins and layout scripts */
+	$(document).ready(function() {
+		Metronic.init(); // Run metronic theme
+		Metronic.setAssetsPath('public/vendor/assets/'); // Set the assets folder path
+	});
+</script>
+<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
